@@ -140,6 +140,7 @@ func (a *App) Install(client *kubernetes.Clientset) error {
 		},
 	}
 
+	a.objects = append(a.objects, nginxDeployment)
 	if client != nil {
 		_, err = client.AppsV1().Deployments("default").Create(context.TODO(), nginxDeployment, metav1.CreateOptions{})
 		if err != nil {
